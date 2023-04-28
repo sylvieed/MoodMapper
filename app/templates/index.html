@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>Mood Mapper</title>
+        <style>
+        #overlay, .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Mood mapper</h1>
+        <div style="position: relative" class="margin">
+            <video onloadedmetadata="onPlay(this)" id="inputVideo" autoplay muted playsinline></video>
+            <canvas id="overlay" />
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="{{ url_for ('static', filename='js/face-api.js') }}"></script>
+        <script src="{{ url_for ('static', filename='js/script.js') }}"></script>
+    </body>
+</html>
+
+
+
