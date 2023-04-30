@@ -15,18 +15,23 @@
     <div class="help help-topright">
         <span class="material-symbols-rounded help-icon">question_mark</span>
         <p class="help-content">
-        This is a facial expression tracking system. It will analyze your facial expressions bla bla
+        This is a facial expression tracking system. It will analyze your facial expressions.
         </p>
     </div>
 </div>
+<label class="switch-label">Dynamic Emotion Tracking</label>
+</div>
 
-<label class="switch">
-    <input type="checkbox" id="realtimeToggle" onclick="onRealtimeToggle()" checked>
-    <span class="slider round"></span>
-</label>
-<label class="switch-label">Real-time face tracking</label>
 
-<div class="help">
+<div class="togglecontainer">
+
+    <label class="switch">
+        <input type="checkbox" id="realtimeToggle" onclick="onRealtimeToggle()" checked>
+        <span class="slider round"></span>
+    </label>
+
+
+<div class="help" >
     <span class="material-symbols-rounded help-icon">question_mark</span>
     <p class="help-content">
     Disabling this analyzes your facial expressions every 1 second rather than as often as possible. 
@@ -34,8 +39,8 @@
     It will not affect your expression analysis results.
     </p>
 </div>
-
+</div>
 <script src="{{ url_for ('static', filename='js/face-api.js') }}"></script>
 <script src="{{ url_for ('static', filename='js/script.js') }}"></script>
-</div>
+
 {% endblock %}
