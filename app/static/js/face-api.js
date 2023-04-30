@@ -1435,7 +1435,7 @@
       DrawTextField.prototype.draw = function (canvasArg) {
           var canvas = resolveInput(canvasArg);
           var ctx = getContext2dOrThrow(canvas);
-          var _a = this.options, backgroundColor = _a.backgroundColor, fontColor = _a.fontColor, fontSize = _a.fontSize, fontStyle = _a.fontStyle, padding = _a.padding;
+          var _a = this.options, backgroundColor = "#A26769", fontColor = _a.fontColor, fontSize = _a.fontSize, fontStyle = _a.fontStyle, padding = _a.padding;
           ctx.font = fontSize + "px " + fontStyle;
           var maxTextWidth = this.measureWidth(ctx);
           var textHeight = this.measureHeight();
@@ -1456,7 +1456,7 @@
       function DrawBoxOptions(options) {
           if (options === void 0) { options = {}; }
           var boxColor = options.boxColor, lineWidth = options.lineWidth, label = options.label, drawLabelOptions = options.drawLabelOptions;
-          this.boxColor = boxColor || 'rgba(0, 0, 255, 1)';
+          this.boxColor = "#A26769";
           this.lineWidth = lineWidth || 2;
           this.label = label;
           var defaultDrawLabelOptions = {
@@ -1475,7 +1475,7 @@
       }
       DrawBox.prototype.draw = function (canvasArg) {
           var ctx = getContext2dOrThrow(canvasArg);
-          var _a = this.options, boxColor = _a.boxColor, lineWidth = _a.lineWidth;
+          var _a = this.options, boxColor = "#A26769", lineWidth = _a.lineWidth;
           var _b = this.box, x = _b.x, y = _b.y, width = _b.width, height = _b.height;
           ctx.strokeStyle = boxColor;
           ctx.lineWidth = lineWidth;

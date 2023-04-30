@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style/main.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style/tooltip.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style/toggle.css') }}">
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cooltipz-css@2.2.2/cooltipz.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <title>Mood Mapper</title>
+    </head>
+    <body>
+        <div id="navbar" class="center">
+            <ul>
+                <li><a href="{{ url_for('home') }}"><span class="material-symbols-rounded icon">home</span></a></li>
+                <li><a href="{{ url_for('dashboard') }}">dasboard</a></li>
+                <li class="dropdown">
+                <a href="#"><span class="material-symbols-rounded icon">menu</span></a>
+                <ul class="dropdown-content">
+                    <li><a href="{{ url_for('tutorial') }}">tutorial</a></li>
+                    <li><a href="{{ url_for('faq') }}">FAQ</a></li>
+                    <li><a href="{{ url_for('privacy') }}">privacy</a></li>
+                    <li><a href="{{ url_for('contact') }}">contact</a></li>
+                </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div id="content">{% block content %}{% endblock %}</div>
+    </body>
+</html>

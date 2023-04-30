@@ -1,0 +1,56 @@
+.help {
+    position: relative;
+    display: inline-block;
+    top: 0.5em;
+    z-index: 5;
+}
+
+.help-topright {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+}
+
+.help-icon {
+    display: inline-block;
+    background-color: #86A873;
+    border-radius: 50%;
+    color: white;
+    padding: 0.2rem;
+    cursor: pointer;
+}
+
+.help-content {
+    display: none;
+    animation: fadeOut 0.3s;
+    z-index: 5;
+}
+
+.help:hover .help-content {
+    display: block;
+    position: absolute;
+    width: 20rem;
+    left: 0;
+    bottom: -1.2rem;
+    background-color: #86A873;
+    color: white;
+    padding: 1rem;
+    border-radius: 1rem;
+    z-index: 5;
+    animation: fadeIn 0.3s;
+}
+
+.help-topright:hover .help-content {
+    top: -1.3rem;
+    bottom: auto;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}

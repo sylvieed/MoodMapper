@@ -1,0 +1,115 @@
+body {
+    background-color: #efd9cd;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+}
+
+#content {
+    margin: 1rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #A26769;
+}
+
+/* navbar */
+#navbar {
+    background-color: #A26769;
+    height: 3rem;
+    line-height: 3rem;
+    vertical-align: middle;
+}
+
+#navbar ul {
+    list-style-type: none;
+    overflow: hidden;
+    margin: 0 0.5rem 0 0.5rem;
+    padding: 0;
+}
+
+#navbar li {
+    float: left;
+    padding: 0 0.5rem 0 0.5rem;
+}
+
+#navbar li a {
+    display: block;
+    color: #623B3D;
+    text-align: center;
+    text-decoration: none;
+}
+
+#navbar li:hover {
+    background-color: #c28486;
+}
+
+#navbar li.dropdown {
+    display: block;
+    float: right;
+    
+}
+
+#navbar .dropdown-content {
+    display: none;
+    position: absolute;
+    /* min-width: 160px; */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    top: 3rem;
+    height: 3rem;
+    right: 0;
+    background-color: #A26769;
+}
+
+#navbar .dropdown-content a {
+    color: #623B3D;
+    text-decoration: none;
+    display: block;
+}
+
+#navbar .dropdown-content a:hover {
+    background-color: #c28486;
+}
+
+#navbar .dropdown:hover .dropdown-content {
+    display: block;
+}
+
+#navbar .icon {
+    display: inline-block;
+    vertical-align: -0.3rem; /* makes icon align with text */
+}
+
+/* For video and face tracking */
+#overlay, .overlay {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    width: 640px;
+    height: 480px;
+    z-index: 4;
+}
+
+video {
+    border: 16px solid #76484A;
+    width: 640px;
+    height: 480px;
+    z-index: 2;
+    position: absolute;
+}
+
+.camera-container {
+    width: 672px;
+    height: 512px;
+}
+
+.waiting {
+    position: absolute;
+    top: 3em;
+    /* display: inline-block; */
+    width: 100%;
+    text-align: center;
+    z-index: 1;
+}

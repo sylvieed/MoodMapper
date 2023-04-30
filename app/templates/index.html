@@ -1,26 +1,36 @@
-<html>
-    <head>
-        <title>Mood Mapper</title>
-        <style>
-        #overlay, .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            }
-        </style>
-    </head>
-    <body>
-        <h1>Mood mapper</h1>
-        <div style="position: relative" class="margin">
-            <video onloadedmetadata="onPlay(this)" id="inputVideo" autoplay muted playsinline></video>
-            <canvas id="overlay" />
-        </div>
+{% extends "layout.html" %}
+{% block content %}
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-        <script src="{{ url_for ('static', filename='js/face-api.js') }}"></script>
-        <script src="{{ url_for ('static', filename='js/script.js') }}"></script>
-    </body>
-</html>
+<h1>Mood mapper</h1>
+<div style="position: relative" class="camera-container">
+    
+    <video onloadedmetadata="onPlay(this)" id="inputVideo" autoplay muted playsinline></video>
+    <canvas id="overlay" ></canvas>
+    <p class="waiting">Waiting for camera access...</p>
+    <div class="help help-topright">
+        <span class="material-symbols-rounded help-icon">question_mark</span>
+        <p class="help-content">
+        This is a real-time face tracking system. It will analyze your facial expressions bla bla
+        </p>
+    </div>
+</div>
 
+<label class="switch">
+    <input type="checkbox" id="realtimeToggle" onclick="onRealtimeToggle()">
+    <span class="slider round"></span>
+</label>
+<label class="switch-label">Real-time face tracking</label>
 
+<div class="help">
+    <span class="material-symbols-rounded help-icon">question_mark</span>
+    <p class="help-content">
+    Disabling this analyzes your facial expressions every 1 second rather than as often as possible. 
+    This is useful if you have a slow computer or if you want to save battery life.
+    It will not affect your expression analysis results.
+    </p>
+</div>
 
+<script src="{{ url_for ('static', filename='js/face-api.js') }}"></script>
+<script src="{{ url_for ('static', filename='js/script.js') }}"></script>
+
+{% endblock %}

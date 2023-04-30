@@ -7,6 +7,26 @@ from .helpers import update_moods
 @app.route("/")
 def home():
     return render_template('index.html')
+
+@app.route("/dashbaord")
+def dashboard():
+    return render_template('dashboard.html')
+
+@app.route("/tutorial")
+def tutorial():
+    return render_template('tutorial.html')
+
+@app.route("/faq")
+def faq():
+    return render_template('faq.html')
+
+@app.route("/privacy")
+def privacy():
+    return render_template('privacy.html')
+
+@app.route("/contact")
+def contact():
+    return render_template('contact.html')
     
 @app.route("/save_mood", methods=["POST"])
 def save_mood():

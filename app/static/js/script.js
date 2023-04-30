@@ -1,6 +1,7 @@
 let modelsLoaded = false;
 let lastExpressions = null;
-var interval = 1000;
+var sendDataInterval = 1000;
+var expressionInterval = 1000;
 
 function sendMood() {
     console.log("Sending moods to server")
@@ -10,15 +11,23 @@ function sendMood() {
         $.post( "/save_mood", {
             expressions: expressions,
             complete: function () {
-                console.log("Sent moods, running again in " + interval + "ms")
+                console.log("Sent moods, running again in " + sendDataInterval + "ms")
                 // Send the mood again after 1 second
-                setTimeout(sendMood, interval);
+                setTimeout(sendMood, sendDataInterval);
             }
         });
     } else {
-        console.log("No mood detected, running again in " + interval + "ms")
+        console.log("No mood detected, running again in " + sendDataInterval + "ms")
         // Send the mood again after 1 second
-        setTimeout(sendMood, interval);
+        setTimeout(sendMood, sendDataInterval);
+    }
+}
+
+function onRealtimeToggle() {
+    if ($('#realtimeToggle')[0].checked) {
+        expressionInterval = 0;
+    } else {
+        expressionInterval = 1000;
     }
 }
 
@@ -30,11 +39,9 @@ async function onPlay() {
     const videoEl = $('#inputVideo').get(0)
 
     if(videoEl.paused || videoEl.ended || !isFaceDetectionModelLoaded() || !modelsLoaded){
-        return setTimeout(() => onPlay())
+        return setTimeout(onPlay, expressionInterval)
     }
 
-    // let inputSize = 512
-    // let scoreThreshold = 0.5
     const options = new faceapi.TinyFaceDetectorOptions()
     const result = await faceapi.detectSingleFace(videoEl, options).withFaceExpressions()
     
@@ -51,7 +58,7 @@ async function onPlay() {
         lastExpressions = null;
     }
 
-    setTimeout(() => onPlay())
+    setTimeout(onPlay, expressionInterval)
 }
             
 async function run(){
