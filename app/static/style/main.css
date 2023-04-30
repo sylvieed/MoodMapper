@@ -170,3 +170,29 @@ video.mini {
     display: inline-block;
     color: #d19294;
 }
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+    background-color: #A26769;
+    border-radius: 5px;
+    box-shadow: 0 5px #6d4243;
+    transition: all 0.3s;
+  }
+  
+  .button:hover {
+    background-color: #6d4243;
+    box-shadow: 0 3px #6d4243;
+    transform: translateY(2px);
+  }
+  
+  .button:active {
+    background-color: #A26769;
+    box-shadow: none;
+    transform: translateY(5px);
+  }
+  
