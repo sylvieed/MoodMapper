@@ -11,10 +11,7 @@ def calculate_average_confidence(mood, thisCondidence):
         return thisCondidence
     return (mood.average_accuracy * moodDuration + thisCondidence * thisDuration) / (moodDuration + thisDuration)    
 
-def update_moods(mood, confidence):
-    # Update last record saved at
-    session["last_saved_at"] = datetime.now()
-    
+def update_moods(mood, confidence):    
     # Save the mood to the database
     # First, check what the most recent mood was
     lastMood = db.session.query(Mood).order_by(Mood.endTime.desc()).first()
@@ -37,3 +34,19 @@ def update_moods(mood, confidence):
             })
     
     db.session.commit()
+    
+    # Update last record saved at
+    session["last_saved_at"] = datetime.now()
+
+def moods_in_timeframe(start_time, end_time):
+    moods = db.session.query(Mood).filter(Mood.endTime >= start_time, Mood.startTime <= end_time).all()
+    moodDurations = {}
+    for mood in moods:
+        duration = (min(mood.endTime, end_time) - max(mood.startTime, start_time)).total_seconds()
+        if mood.type not in moodDurations:
+            moodDurations[mood.type] = 0
+        moodDurations[mood.type] += duration
+    totalDuration = sum(moodDurations.values())
+    for mood in moodDurations:
+        moodDurations[mood] = moodDurations[mood] / totalDuration
+    return moodDurations
