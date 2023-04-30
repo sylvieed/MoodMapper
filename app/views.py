@@ -1,9 +1,9 @@
 import json
-from flask import render_template, request
+from flask import redirect, render_template, request, url_for
 from datetime import datetime, time
 
 from . import app
-from .helpers import moods_in_timeframe, update_moods, pretty_total_time, get_first_mood_time
+from .helpers import *
 
 @app.route("/")
 def home():
@@ -14,7 +14,7 @@ def dashboard():
     # Define Plot Data
     # today = datetime.combine(datetime.now(), time.min)
     start = get_first_mood_time()
-    moods = moods_in_timeframe(start, datetime.now())
+    moods = percent_moods_in_timeframe(start, datetime.now())
     
     # Combine small moods into "other"
     moods["other"] = 0
@@ -32,8 +32,11 @@ def dashboard():
     
     time_used = pretty_total_time(start, datetime.now())
     print(time_used)
+    
+    domains = get_all_domains(start, datetime.now())
+    print(domains)
 
-    return render_template('dashboard.html', data=data, labels=labels, time_used=time_used)
+    return render_template('dashboard.html', data=data, labels=labels, time_used=time_used, domains=domains)
 
 @app.route("/tutorial")
 def tutorial():
@@ -71,3 +74,8 @@ def save_mood():
     update_moods(mood, expressions[mood])
     
     return "Success"
+
+@app.route("/get_websites", methods=["POST"])
+def get_websites():
+    receive_site_usuage_data(request.form)
+    return redirect(url_for('home'))

@@ -10,5 +10,5 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
 
 db.init_app(app)
 
-from .models import Mood
+from .models import Mood, Website
 from app import views

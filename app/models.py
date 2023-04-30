@@ -1,9 +1,14 @@
-from app import db
+import app
 
-class Mood(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    type = db.Column(db.String(64))
-    startTime = db.Column(db.DateTime)
-    endTime = db.Column(db.DateTime)
-    average_accuracy = db.Column(db.Float)
+class Mood(app.db.Model):
+    id = app.db.Column(app.db.Integer, primary_key=True)
+    type = app.db.Column(app.db.String(64))
+    startTime = app.db.Column(app.db.DateTime)
+    endTime = app.db.Column(app.db.DateTime)
+    average_accuracy = app.db.Column(app.db.Float)
     
+class Website(app.db.Model):
+    id = app.db.Column(app.db.Integer, primary_key=True)
+    name = app.db.Column(app.db.String(256))
+    startTime = app.db.Column(app.db.DateTime)
+    endTime = app.db.Column(app.db.DateTime)
