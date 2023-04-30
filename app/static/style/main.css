@@ -108,16 +108,14 @@ h1, h2, h3, h4, h5, h6 {
 /* For video and face tracking */
 #overlay, .overlay {
     position: absolute;
-    top: 1rem;
-    left: 1rem;
+    top: 0.5rem;
+    left: 0.5rem;
     width: 640px;
     height: 480px;
     z-index: 4;
 }
 
 #overlay.mini {
-    left: 0.5rem;
-    top: 0.5rem;
     width: 320px;
     height: 240px;
 }
@@ -136,8 +134,8 @@ video.mini {
 }
 
 .camera-container {
-    width: 672px;
-    height: 512px;
+    width: 656px;
+    height: 496px;
 }
 .camera-container.mini {
     position: absolute;
