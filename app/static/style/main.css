@@ -1,9 +1,15 @@
 body {
     background-color: #efd9cd;
-    font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
     font-size: 20px;
+    font-family: 'Ysabeau', sans-serif;
+}
+@font-face {
+    font-family: 'Ysabeau';
+    src: url('Ysabeau-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
 .maincontainer {
