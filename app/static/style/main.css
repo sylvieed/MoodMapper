@@ -101,17 +101,36 @@ h1, h2, h3, h4, h5, h6 {
     z-index: 4;
 }
 
+#overlay.mini {
+    left: 0.5rem;
+    top: 0.5rem;
+    width: 320px;
+    height: 240px;
+}
+
 video {
-    border: 16px solid #76484A;
+    border: 8px solid #76484A;
     width: 640px;
     height: 480px;
     z-index: 2;
     position: absolute;
 }
 
+video.mini {
+    width: 320px;
+    height: 240px;
+}
+
 .camera-container {
     width: 672px;
     height: 512px;
+}
+.camera-container.mini {
+    position: absolute;
+    width: 336px;
+    height: 256px;
+    right: 1em;
+    top: 3em;
 }
 
 #loading-camera {

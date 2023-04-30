@@ -8,19 +8,31 @@
 
 <div style="width: 350px;"><canvas id="moods"></canvas></div>
 
+<div class="camera-container mini">
+    <video class="mini" onloadedmetadata="onPlay(this)" id="inputVideo" autoplay muted playsinline></video>
+    <canvas id="overlay" class="mini"></canvas>
+    <p id="loading-camera">
+        Waiting for camera access...<br>
+        This usually takes a few moments.<br>
+        If you haven't already, please allow camera access.
+    </p>
+</div>
+
+<script src="{{ url_for ('static', filename='js/face-api.js') }}"></script>
+<script src="{{ url_for ('static', filename='js/script.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 <script>
 const colors = ['#A26769','#905E71','#775975','#5C5471','#424F67','#2F4858']
 const otherColors = ['#A26769', '#574142', '#BFA5A5', '#777A4E', '#ACAE7F', '#905E71']
 
 const data = {
-  labels: {{ labels | tojson}},
-  datasets: [{
-    label: 'My First Dataset',
-    data: {{ data | tojson}},
-    backgroundColor: otherColors,
-    hoverOffset: 4
-  }]
+    labels: {{ labels | tojson}},
+    datasets: [{
+        label: 'My First Dataset',
+        data: {{ data | tojson}},
+        backgroundColor: otherColors,
+        hoverOffset: 4
+    }]
 };
 
 const config = {
