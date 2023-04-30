@@ -66,7 +66,7 @@ def getDomain(url):
 def sameDomain(url, domain):
     return getDomain(url) == domain
 
-def moods_in_timeframe_for_website(domain, start_time, end_time):
+def moods_in_timeframe_for_domain(domain, start_time, end_time):
     allWebsites = db.session.query(Website).filter(Website.endTime >= start_time, Website.startTime <= end_time).all()
     websites = []
     for website in allWebsites:
@@ -84,6 +84,12 @@ def moods_in_timeframe_for_website(domain, start_time, end_time):
                 moodDurations[mood] = moods[mood]
     return moodDurations
 
+def get_all_domains_pretty(start_time, end_time):
+    domains = get_all_domains(start_time, end_time)
+    for domain in domains:
+        domains[domain] = pretty_duration(timedelta(seconds=domains[domain]))
+    return domains
+
 def get_all_domains(start_time, end_time):
     domains = {}
     websites = db.session.query(Website).filter(Website.endTime >= start_time, Website.startTime <= end_time).all()
@@ -92,10 +98,7 @@ def get_all_domains(start_time, end_time):
         if domain not in domains:
             domains[domain] = (website.endTime - website.startTime).total_seconds()
         else:
-            domains[domain] += (website.endTime - website.startTime).total_seconds()
-    for domain in domains:
-        domains[domain] = pretty_duration(timedelta(seconds=domains[domain]))
-        
+            domains[domain] += (website.endTime - website.startTime).total_seconds()        
     return domains
 
 def total_time(start_time, end_time):

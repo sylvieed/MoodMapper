@@ -196,3 +196,19 @@ video.mini {
     transform: translateY(5px);
   }
   
+
+.charts-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin: 1rem;
+}
+
+.section {
+    float: left;
+}
+
+.domain-name {
+    font-weight: bold;
+}
