@@ -2,10 +2,12 @@
 {% block content %}
 <h1>Dashboard</h1>
 <div>
-    <form id="filter-form" action="/filter" method="GET">
+    <form id="filter-form" action="/filter" method="POST">
       <label for="time-filter">Select Time Range:</label>
-      <select id="time-filter" onchange="document.getElementById('filter-form').submit()">
+      <select name="time-filter" id="time-filter" onchange="document.getElementById('filter-form').submit()">
         <option value="all">All Time</option>
+        <option value="today">Today</option>
+        <option value="week">This week</option>
         <option value="5">Last 5 Minutes</option>
         <option value="10">Last 10 Minutes</option>
         <option value="60">Last Hour</option>

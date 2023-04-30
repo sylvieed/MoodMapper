@@ -9,11 +9,24 @@ from .helpers import *
 def home():
     return render_template('index.html')
 
-@app.route("/dashboard")
-def dashboard():
+@app.route('/dashboard', defaults={'timeframe': None})
+@app.route("/dashboard/<timeframe>")
+def dashboard(timeframe):
     # Define Plot Data
     # today = datetime.combine(datetime.now(), time.min)
-    start = get_first_mood_time()
+    if timeframe is None or timeframe is 'all':
+        start = get_first_mood_time()
+    elif timeframe == 'today':
+        start = datetime.combine(datetime.now(), time.min)
+    elif timeframe == 'week':
+        start = datetime.now() - timedelta(days=7)
+    elif timeframe == '60':
+        start = datetime.now() - timedelta(minutes=60)
+    elif timeframe == '10':
+        start = datetime.now() - timedelta(minutes=10)
+    elif timeframe == '5':
+        start = datetime.now() - timedelta(minutes=5)        
+        
     moods = percent_moods_in_timeframe(start, datetime.now())
     
     # Combine small moods into "other"
@@ -38,6 +51,12 @@ def dashboard():
 
     return render_template('dashboard.html', data=data, labels=labels, time_used=time_used, domains=domains)
 
+@app.route("/filter", methods=["POST"])
+def filter():
+    value = request.form.get('time-filter')
+    return redirect(url_for('dashboard', timeframe=value))
+    
+
 @app.route("/websites")
 def websites():
     data = {}
@@ -55,8 +74,6 @@ def websites():
     values = {}
     for domain in data:
         values[domain] = list(data[domain].values())
-        
-    
     
     return render_template('websites.html', labels=labels, data=values, domains=list(domains.keys()))
 
