@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
 <h1>Dashboard</h1>
+<div class ="maincontainer">
 <div class="time-used">
     <span class="duration">{{time_used}}</span> using Mood Mapper.
 </div>
@@ -46,5 +47,5 @@ const myChart = new Chart(
     config
 );
 </script>
-    
+</div>
 {% endblock %}

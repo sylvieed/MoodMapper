@@ -6,6 +6,14 @@ body {
     font-size: 20px;
 }
 
+.maincontainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
 #content {
     margin: 1rem;
 }

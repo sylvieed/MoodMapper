@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
-
+<div class="maincontainer">
 <h1 style="display: inline-block;">Mood mapper</h1>
 <p id="loading-models">Loading models... this should only take a few moments.</p>
 <div style="position: relative" class="camera-container">
@@ -37,5 +37,5 @@
 
 <script src="{{ url_for ('static', filename='js/face-api.js') }}"></script>
 <script src="{{ url_for ('static', filename='js/script.js') }}"></script>
-
+</div>
 {% endblock %}
