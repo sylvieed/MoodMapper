@@ -148,7 +148,7 @@ video.mini {
     width: 336px;
     height: 256px;
     right: 1em;
-    top: 3em;
+    bottom: 1em;
 }
 
 #loading-camera {
