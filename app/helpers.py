@@ -1,4 +1,3 @@
-from flask import session
 from datetime import datetime, timedelta
 from . import db, Mood
 
@@ -65,3 +64,9 @@ def pretty_total_time(start_time, end_time):
         return str(duration.seconds // 60) + " minute" + ("s" if duration.seconds // 60 > 1 else "")
     else:
         return str(duration.seconds) + " seconds"
+    
+def get_first_mood_time():
+    firstMood = db.session.query(Mood).order_by(Mood.startTime).first()
+    if firstMood is None:
+        return datetime.now()
+    return firstMood.startTime
