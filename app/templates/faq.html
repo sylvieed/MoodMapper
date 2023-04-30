@@ -1,8 +1,42 @@
 {% extends "layout.html" %}
 {% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  </head>
 <h1>FAQ</h1>
+<div class="pagecontainer">
 <div class="maincontainer">
-
+    <img class="image" src="{{ url_for('static', filename='images/faqmood.gif') }}" alt="FAQ">
+      <body>
+        <h2>How does MoodMapper work?</h2>
+        <p>MoodMapper is a web-based application and browser extension that tracks your emotions while you browse the internet. To use MoodMapper, you'll need to download our browser extension and have our website open in a separate tab.</p>
+        <p>As you browse different websites, MoodMapper will analyze your facial expressions and provide real-time feedback on your emotional state. Our system uses machine learning algorithms to recognize a wide range of emotions, including happiness, sadness, anger, and surprise.</p>
+        
+        <h2>How do I download the MoodMapper browser extension?</h2>
+        <p>To download the MoodMapper browser extension, simply go to our website and click on the "Download" button in the top menu on the <a href="{{ url_for('home') }}".>homepage</a>. This will take you to the Chrome Web Store or Mozilla Add-ons, depending on your browser.</p>
+        <p>Once you're on the extension page, click on the "Add to Chrome" or "Add to Firefox" button to install the extension. You'll need to give the extension permission to access your webcam so that it can track your facial expressions.</p>
+        
+        <h2>How do I use MoodMapper while browsing the internet?</h2>
+        <p>To use MoodMapper while browsing the internet, make sure you have the MoodMapper website open in a separate tab and the browser extension installed and activated.</p>
+        <p>As you browse different websites, MoodMapper will analyze your facial expressions and provide real-time feedback on your emotional state. You can see your emotional state in the MoodMapper dashboard on our website, which shows a graph of your emotions over time.</p>
+        <p>If you want to see more detailed information about your emotions while browsing a specific website, simply click on the <a href="{{ url_for('dashboard') }}">"dashboard"</a> next to the home button in the MoodMapper dashboard. This will show you a breakdown of your emotions while using that website, including the percentage of time you spent in each emotional state.</p>
+        
+        <h2>Is my privacy protected while using MoodMapper?</h2>
+        <p>Yes, we take your privacy very seriously at MoodMapper. All of your facial expression data is processed locally on your computer, and we do not store any video or image data on our servers. We only collect anonymized data on your emotional state and the websites you visit, which we use to improve our algorithms and provide better insights into emotional wellbeing.</p>
+        <p>If you have any concerns about privacy or data security, please contact <a href="{{ url_for('contact') }}">our team</a>.</p>
+        
+        <h2>How can I get help with using MoodMapper?</h2>
+        <p>If you need help with using MoodMapper, please visit our <a href="{{ url_for('contact') }}">our support team </a></p>
+        <h2>How do I uninstall the Moodmapper extension?</h2>
+        <p>To uninstall Moodmapper:</p>
+        <ol>
+          <li>Click the Moodmapper icon in your browser</li>
+          <li>Select "Uninstall"</li>
+          <li>Follow the prompts to remove the extension</li>
+        </ol>
+      
+      </body>
 </div>
-
+</div>
 {% endblock %}

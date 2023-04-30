@@ -1,6 +1,10 @@
 {% extends "layout.html" %}
 {% block content %}
-<div class="maincontainer">
 <h1>Privacy</h1>
-</div>
+<div class="pagecontainer">
+    <div class="maincontainer">
+    <img class="image" src="{{ url_for('static', filename='images/privacymood.gif') }}" alt="privacy">
+    <h2>Is my privacy protected while using MoodMapper?</h2>
+    <p>Yes, we take your privacy very seriously at MoodMapper. All of your facial expression data is processed locally on your computer, and we do not store any video or image data on our servers. We only collect anonymized data on your emotional state and the websites you visit, which we use to improve our algorithms and provide better insights into emotional wellbeing.</p>
+    <p>If you have any concerns about privacy or data security, please contact <a href="{{ url_for('contact') }}">our team</a>.</p>
 {% endblock %}

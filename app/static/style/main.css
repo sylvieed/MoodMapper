@@ -12,6 +12,12 @@ body {
     font-style: normal;
 }
 
+.pagecontainer {
+    max-width: 800px; /* set the maximum width of the container */
+    margin: 0 auto; /* center the container horizontally */
+    padding: 20px; /* add some padding to the container */ 
+}
+
 .maincontainer {
     display: flex;
     flex-direction: column;
