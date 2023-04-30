@@ -64,6 +64,8 @@ def websites():
     for domain in domains:
         data[domain] = moods_in_timeframe_for_domain(domain, get_first_mood_time(), datetime.now())
         
+    times = get_all_domains_pretty(get_first_mood_time(), datetime.now())
+        
     # Remove empty domains
     domains = {key: domains[key] for key in domains.keys() if len(data[key]) > 0}
     data = {key: data[key] for key in data.keys() if len(data[key]) > 0}
@@ -75,7 +77,7 @@ def websites():
     for domain in data:
         values[domain] = list(data[domain].values())
     
-    return render_template('websites.html', labels=labels, data=values, domains=list(domains.keys()))
+    return render_template('websites.html', labels=labels, data=values, domains=list(domains.keys()), times=times)
 
 @app.route("/tutorial")
 def tutorial():

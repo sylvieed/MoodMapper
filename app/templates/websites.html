@@ -11,7 +11,7 @@
 {% for domain in domains %}
 <div class="section">
     <div style="width: 350px;"><canvas id="chart-{{domain}}"></canvas></div>
-    <span class="domain-name">{{domain}}</b>
+    <span class="domain-name">{{domain}}</span>, {{times[domain]}}
     <script>
         data = {
             labels: {{ labels[domain] | tojson }},
@@ -36,6 +36,7 @@
     </script>
 </div>
 {% endfor %}
+<br>
 
 <!-- <div class="camera-container mini">
     <video class="mini" onloadedmetadata="onPlay(this)" id="inputVideo" autoplay muted playsinline></video>
