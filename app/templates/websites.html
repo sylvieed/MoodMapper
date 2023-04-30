@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+{% block content %}
+<script>
+    const colors = ['#A26769','#905E71','#775975','#5C5471','#424F67','#2F4858']
+    const otherColors = ['#A26769', '#574142', '#BFA5A5', '#777A4E', '#ACAE7F', '#905E71']
+    let data, config, myChart;
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+<div class ="container">
+{% for domain in domains %}
+<div class="section">
+    <div style="width: 350px;"><canvas id="chart-{{domain}}"></canvas></div>
+    <span class="domain-name">{{domain}}</b>
+    <script>
+        data = {
+            labels: {{ labels[domain] | tojson }},
+            datasets: [{
+                label: 'My First Dataset',
+                data: {{ data[domain] | tojson}},
+                backgroundColor: otherColors,
+                hoverOffset: 4
+            }]
+        };
+
+        config = {
+            type: 'doughnut',
+            data: data,
+            options: { maintainAspectRatio: false }
+        };
+
+        myChart = new Chart(
+            document.getElementById('chart-{{domain}}'),
+            config
+        );
+    </script>
+</div>
+{% endfor %}
+
+<!-- <div class="camera-container mini">
+    <video class="mini" onloadedmetadata="onPlay(this)" id="inputVideo" autoplay muted playsinline></video>
+    <canvas id="overlay" class="mini"></canvas>
+    <p id="loading-camera">
+        Waiting for camera access...<br>
+        This usually takes a few moments.<br>
+        If you haven't already, please allow camera access.
+    </p>
+</div> -->
+
+<!-- <script src="{{ url_for ('static', filename='js/face-api.js') }}"></script> -->
+<!-- <script src="{{ url_for ('static', filename='js/script.js') }}"></script> -->
+<script>
+
+</script>
+</div>
+{% endblock %}

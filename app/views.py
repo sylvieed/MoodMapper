@@ -38,6 +38,28 @@ def dashboard():
 
     return render_template('dashboard.html', data=data, labels=labels, time_used=time_used, domains=domains)
 
+@app.route("/websites")
+def websites():
+    data = {}
+    domains = get_all_domains(get_first_mood_time(), datetime.now())
+    for domain in domains:
+        data[domain] = moods_in_timeframe_for_domain(domain, get_first_mood_time(), datetime.now())
+        
+    # Remove empty domains
+    domains = {key: domains[key] for key in domains.keys() if len(data[key]) > 0}
+    data = {key: data[key] for key in data.keys() if len(data[key]) > 0}
+    
+    labels = {}
+    for domain in data:
+        labels[domain] = list(data[domain].keys())
+    values = {}
+    for domain in data:
+        values[domain] = list(data[domain].values())
+        
+    
+    
+    return render_template('websites.html', labels=labels, data=values, domains=list(domains.keys()))
+
 @app.route("/tutorial")
 def tutorial():
     return render_template('tutorial.html')
