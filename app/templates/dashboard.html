@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Dashboard</h1>
+<div class="time-used">
+    <span class="duration">{{time_used}}</span> using Mood Mapper.
+</div>
+<br>
+
+<div style="width: 400px;"><canvas id="moods"></canvas></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script>
+const colors = ['#A26769','#905E71','#775975','#5C5471','#424F67','#2F4858']
+const otherColors = ['#A26769', '#574142', '#BFA5A5', '#777A4E', '#ACAE7F', '#905E71']
+
+const data = {
+  labels: {{ labels | tojson}},
+  datasets: [{
+    label: 'My First Dataset',
+    data: {{ data | tojson}},
+    backgroundColor: otherColors,
+    hoverOffset: 4
+  }]
+};
+
+const config = {
+    type: 'doughnut',
+    data: data,
+    options: { maintainAspectRatio: false }
+};
+
+const myChart = new Chart(
+    document.getElementById('moods'),
+    config
+);
+</script>
+    
+{% endblock %}

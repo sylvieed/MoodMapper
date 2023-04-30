@@ -7,3 +7,4 @@ It uses this data in conjunction with website usage information from a chrome ex
 - [face-api.js](https://justadudewhohacks.github.io/face-api.js/docs/index.html)
 - [Flask](https://flask.palletsprojects.com/en/2.0.x/)
 - [SQLAlchemy](https://www.sqlalchemy.org/)
+- [chart.js](https://www.chartjs.org/)
