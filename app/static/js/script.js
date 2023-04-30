@@ -1,7 +1,7 @@
 let modelsLoaded = false;
 let lastExpressions = null;
 var sendDataInterval = 1000;
-var expressionInterval = 1000;
+var expressionInterval = 0;
 
 function sendMood() {
     console.log("Sending moods to server")
@@ -40,6 +40,8 @@ async function onPlay() {
 
     if(videoEl.paused || videoEl.ended || !isFaceDetectionModelLoaded() || !modelsLoaded){
         return setTimeout(onPlay, expressionInterval)
+    } else {
+        $('#loading-models').hide()
     }
 
     const options = new faceapi.TinyFaceDetectorOptions()

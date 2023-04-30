@@ -114,11 +114,16 @@ video {
     height: 512px;
 }
 
-.waiting {
+#loading-camera {
     position: absolute;
     top: 3em;
-    /* display: inline-block; */
     width: 100%;
     text-align: center;
     z-index: 1;
+    color: #d19294;
+}
+
+#loading-models {
+    display: inline-block;
+    color: #d19294;
 }
